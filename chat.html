@@ -1,0 +1,1483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- =========================================================
+         CHATGVTL — CHAT INTERFACE
+         Powered by RenAI GVTL
+    ========================================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Chat with ChatGVTL, an intelligent AI assistant powered by RenAI GVTL."
+    >
+
+    <meta
+        name="theme-color"
+        content="#05070d"
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
+
+    <!-- Favicon -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="assets/icons/favicon-32.png"
+    >
+
+    <!-- Fonts -->
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <title>Chat — ChatGVTL</title>
+</head>
+
+<body class="chat-page">
+
+    <!-- =========================================================
+         APPLICATION
+    ========================================================== -->
+
+    <div
+        id="chat-app"
+        class="chat-app"
+    >
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside
+            class="chat-sidebar"
+            id="chat-sidebar"
+            aria-label="Chat sidebar"
+        >
+
+            <!-- Sidebar Header -->
+            <div class="sidebar-header">
+
+                <a
+                    href="index.html"
+                    class="sidebar-brand"
+                    aria-label="ChatGVTL Home"
+                >
+
+                    <span class="sidebar-brand-icon">
+
+                        <img
+                            src="assets/brand/renai-gvtl-icon.svg"
+                            alt="RenAI GVTL"
+                        >
+
+                    </span>
+
+                    <span class="sidebar-brand-text">
+
+                        <strong>
+                            ChatGVTL
+                        </strong>
+
+                        <small>
+                            RenAI GVTL
+                        </small>
+
+                    </span>
+
+                </a>
+
+
+                <button
+                    type="button"
+                    class="sidebar-close-button"
+                    id="sidebar-close-button"
+                    aria-label="Close sidebar"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- New Chat -->
+            <div class="sidebar-new-chat">
+
+                <button
+                    type="button"
+                    class="new-chat-button"
+                    id="new-chat-button"
+                >
+
+                    <span
+                        class="new-chat-icon"
+                        aria-hidden="true"
+                    >
+                        ＋
+                    </span>
+
+                    <span>
+                        New Chat
+                    </span>
+
+                    <span
+                        class="new-chat-shortcut"
+                        aria-hidden="true"
+                    >
+                        Ctrl K
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <!-- Sidebar Search -->
+            <div class="sidebar-search">
+
+                <label
+                    for="conversation-search"
+                    class="sr-only"
+                >
+                    Search conversations
+                </label>
+
+                <div class="search-input-wrapper">
+
+                    <span
+                        class="search-icon"
+                        aria-hidden="true"
+                    >
+                        ⌕
+                    </span>
+
+                    <input
+                        type="search"
+                        id="conversation-search"
+                        name="conversation-search"
+                        placeholder="Search chats"
+                        autocomplete="off"
+                    >
+
+                    <span
+                        class="search-shortcut"
+                        aria-hidden="true"
+                    >
+                        /
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Conversation History -->
+            <div class="sidebar-history">
+
+                <!-- Today -->
+                <section
+                    class="history-group"
+                    aria-labelledby="history-today"
+                >
+
+                    <h2
+                        id="history-today"
+                        class="history-title"
+                    >
+                        Today
+                    </h2>
+
+
+                    <div class="conversation-list">
+
+                        <button
+                            type="button"
+                            class="conversation-item active"
+                            data-conversation-id="conversation-001"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                Explain quantum computing
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="conversation-item"
+                            data-conversation-id="conversation-002"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                Build a landing page
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="conversation-item"
+                            data-conversation-id="conversation-003"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                JavaScript debugging
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Yesterday -->
+                <section
+                    class="history-group"
+                    aria-labelledby="history-yesterday"
+                >
+
+                    <h2
+                        id="history-yesterday"
+                        class="history-title"
+                    >
+                        Yesterday
+                    </h2>
+
+
+                    <div class="conversation-list">
+
+                        <button
+                            type="button"
+                            class="conversation-item"
+                            data-conversation-id="conversation-004"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                Marketing strategy
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="conversation-item"
+                            data-conversation-id="conversation-005"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                AI model architecture
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+
+                <!-- Previous -->
+                <section
+                    class="history-group"
+                    aria-labelledby="history-previous"
+                >
+
+                    <h2
+                        id="history-previous"
+                        class="history-title"
+                    >
+                        Previous 7 Days
+                    </h2>
+
+
+                    <div class="conversation-list">
+
+                        <button
+                            type="button"
+                            class="conversation-item"
+                            data-conversation-id="conversation-006"
+                        >
+
+                            <span class="conversation-icon">
+                                ◇
+                            </span>
+
+                            <span class="conversation-name">
+                                Website architecture
+                            </span>
+
+                            <span class="conversation-menu">
+                                ⋮
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <!-- Sidebar Bottom -->
+            <div class="sidebar-bottom">
+
+                <!-- Explore -->
+                <nav
+                    class="sidebar-navigation"
+                    aria-label="ChatGVTL navigation"
+                >
+
+                    <a
+                        href="models.html"
+                        class="sidebar-nav-item"
+                    >
+
+                        <span class="sidebar-nav-icon">
+                            ✦
+                        </span>
+
+                        <span>
+                            Models
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="images.html"
+                        class="sidebar-nav-item"
+                    >
+
+                        <span class="sidebar-nav-icon">
+                            ◇
+                        </span>
+
+                        <span>
+                            AI Images
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="history.html"
+                        class="sidebar-nav-item"
+                    >
+
+                        <span class="sidebar-nav-icon">
+                            ◷
+                        </span>
+
+                        <span>
+                            History
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="settings.html"
+                        class="sidebar-nav-item"
+                    >
+
+                        <span class="sidebar-nav-icon">
+                            ⚙
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </nav>
+
+
+                <!-- Account -->
+                <div class="sidebar-account">
+
+                    <button
+                        type="button"
+                        class="account-button"
+                        id="account-button"
+                        aria-expanded="false"
+                    >
+
+                        <span class="account-avatar">
+
+                            <img
+                                src="assets/avatars/user-default.png"
+                                alt="User profile"
+                            >
+
+                        </span>
+
+                        <span class="account-information">
+
+                            <strong>
+                                User
+                            </strong>
+
+                            <small>
+                                Free Plan
+                            </small>
+
+                        </span>
+
+                        <span class="account-menu-icon">
+                            ⋮
+                        </span>
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             SIDEBAR OVERLAY
+        ====================================================== -->
+
+        <div
+            class="sidebar-overlay"
+            id="sidebar-overlay"
+            aria-hidden="true"
+        ></div>
+
+
+        <!-- =====================================================
+             MAIN CHAT
+        ====================================================== -->
+
+        <main
+            class="chat-main"
+            id="chat-main"
+        >
+
+            <!-- =================================================
+                 CHAT HEADER
+            ================================================== -->
+
+            <header class="chat-header">
+
+                <!-- Mobile Menu -->
+                <button
+                    type="button"
+                    class="mobile-sidebar-button"
+                    id="mobile-sidebar-button"
+                    aria-label="Open chat menu"
+                    aria-expanded="false"
+                >
+                    ☰
+                </button>
+
+
+                <!-- Model Selector -->
+                <div class="model-selector-wrapper">
+
+                    <button
+                        type="button"
+                        class="model-selector"
+                        id="model-selector"
+                        aria-haspopup="listbox"
+                        aria-expanded="false"
+                    >
+
+                        <span class="model-selector-icon">
+
+                            <img
+                                src="assets/brand/renai-gvtl-icon.svg"
+                                alt=""
+                            >
+
+                        </span>
+
+                        <span class="model-selector-information">
+
+                            <strong>
+                                RenAI Auto
+                            </strong>
+
+                            <small>
+                                Smart routing
+                            </small>
+
+                        </span>
+
+                        <span class="model-selector-arrow">
+                            ▾
+                        </span>
+
+                    </button>
+
+
+                    <!-- Model Dropdown -->
+                    <div
+                        class="model-dropdown"
+                        id="model-dropdown"
+                        role="listbox"
+                        aria-label="Select AI model"
+                    >
+
+                        <div class="model-dropdown-header">
+
+                            <strong>
+                                Select model
+                            </strong>
+
+                            <span>
+                                Powered by RenAI Router
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="model-option active"
+                            data-model="auto"
+                            role="option"
+                            aria-selected="true"
+                        >
+
+                            <span class="model-option-icon">
+                                ⚡
+                            </span>
+
+                            <span class="model-option-content">
+
+                                <strong>
+                                    RenAI Auto
+                                </strong>
+
+                                <small>
+                                    Automatically select the best model
+                                </small>
+
+                            </span>
+
+                            <span class="model-option-check">
+                                ✓
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="model-option"
+                            data-model="lite"
+                            role="option"
+                            aria-selected="false"
+                        >
+
+                            <span class="model-option-icon">
+                                ◇
+                            </span>
+
+                            <span class="model-option-content">
+
+                                <strong>
+                                    RenAI Lite
+                                </strong>
+
+                                <small>
+                                    Fast everyday conversations
+                                </small>
+
+                            </span>
+
+                            <span class="model-option-status">
+                                Future
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="model-option"
+                            data-model="pro"
+                            role="option"
+                            aria-selected="false"
+                        >
+
+                            <span class="model-option-icon">
+                                ✦
+                            </span>
+
+                            <span class="model-option-content">
+
+                                <strong>
+                                    RenAI Pro
+                                </strong>
+
+                                <small>
+                                    Advanced reasoning
+                                </small>
+
+                            </span>
+
+                            <span class="model-option-status">
+                                Future
+                            </span>
+
+                        </button>
+
+
+                        <div class="model-dropdown-divider"></div>
+
+
+                        <button
+                            type="button"
+                            class="model-option"
+                            data-model="vision"
+                            role="option"
+                            aria-selected="false"
+                        >
+
+                            <span class="model-option-icon">
+                                ◉
+                            </span>
+
+                            <span class="model-option-content">
+
+                                <strong>
+                                    Vision
+                                </strong>
+
+                                <small>
+                                    Analyze images and visual content
+                                </small>
+
+                            </span>
+
+                            <span class="model-option-status">
+                                Available
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Header Actions -->
+                <div class="chat-header-actions">
+
+                    <button
+                        type="button"
+                        class="header-action-button"
+                        id="search-chat-button"
+                        aria-label="Search conversation"
+                    >
+                        ⌕
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="header-action-button"
+                        id="share-chat-button"
+                        aria-label="Share conversation"
+                    >
+                        ↗
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="header-action-button"
+                        id="chat-menu-button"
+                        aria-label="Conversation options"
+                    >
+                        ⋮
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 CHAT CONTENT
+            ================================================== -->
+
+            <section
+                class="chat-content"
+                id="chat-content"
+                aria-label="Conversation"
+            >
+
+                <!-- Welcome State -->
+                <div
+                    class="chat-welcome"
+                    id="chat-welcome"
+                >
+
+                    <div class="welcome-logo">
+
+                        <div class="welcome-logo-glow"></div>
+
+                        <img
+                            src="assets/brand/renai-gvtl-icon.svg"
+                            alt="RenAI GVTL"
+                        >
+
+                    </div>
+
+
+                    <span class="welcome-label">
+                        RENAI GVTL
+                    </span>
+
+
+                    <h1>
+                        How can I help you today?
+                    </h1>
+
+
+                    <p>
+                        Ask questions, create content,
+                        write code, analyze information,
+                        or explore ideas with ChatGVTL.
+                    </p>
+
+
+                    <!-- Suggestions -->
+                    <div class="suggestion-grid">
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Explain something to me"
+                        >
+
+                            <span class="suggestion-icon">
+                                💡
+                            </span>
+
+                            <span class="suggestion-content">
+
+                                <strong>
+                                    Explain something
+                                </strong>
+
+                                <small>
+                                    Make a complex topic simple
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Help me write some code"
+                        >
+
+                            <span class="suggestion-icon">
+                                &lt;/&gt;
+                            </span>
+
+                            <span class="suggestion-content">
+
+                                <strong>
+                                    Write code
+                                </strong>
+
+                                <small>
+                                    Build or debug a project
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Help me create something"
+                        >
+
+                            <span class="suggestion-icon">
+                                ✦
+                            </span>
+
+                            <span class="suggestion-content">
+
+                                <strong>
+                                    Create something
+                                </strong>
+
+                                <small>
+                                    Ideas, writing, and concepts
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="suggestion-card"
+                            data-prompt="Analyze this information"
+                        >
+
+                            <span class="suggestion-icon">
+                                ◈
+                            </span>
+
+                            <span class="suggestion-content">
+
+                                <strong>
+                                    Analyze information
+                                </strong>
+
+                                <small>
+                                    Understand data and documents
+                                </small>
+
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     CONVERSATION
+                ================================================== -->
+
+                <div
+                    class="conversation-container"
+                    id="conversation-container"
+                    hidden
+                >
+
+                    <!-- User Message -->
+                    <article
+                        class="message message-user"
+                        data-message-id="message-001"
+                    >
+
+                        <div class="message-wrapper">
+
+                            <div class="message-avatar">
+
+                                <img
+                                    src="assets/avatars/user-default.png"
+                                    alt="You"
+                                >
+
+                            </div>
+
+
+                            <div class="message-body">
+
+                                <div class="message-header">
+
+                                    <strong>
+                                        You
+                                    </strong>
+
+                                    <time>
+                                        Just now
+                                    </time>
+
+                                </div>
+
+
+                                <div class="message-content">
+
+                                    <p>
+                                        Explain how artificial
+                                        intelligence works.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- AI Message -->
+                    <article
+                        class="message message-ai"
+                        data-message-id="message-002"
+                    >
+
+                        <div class="message-wrapper">
+
+                            <div class="message-avatar ai-message-avatar">
+
+                                <img
+                                    src="assets/brand/renai-gvtl-icon.svg"
+                                    alt="ChatGVTL"
+                                >
+
+                            </div>
+
+
+                            <div class="message-body">
+
+                                <div class="message-header">
+
+                                    <strong>
+                                        ChatGVTL
+                                    </strong>
+
+                                    <span class="ai-status">
+                                        ●
+                                    </span>
+
+                                </div>
+
+
+                                <div class="message-content">
+
+                                    <p>
+                                        Artificial intelligence is a
+                                        field of computing focused on
+                                        creating systems that can perform
+                                        tasks that normally require
+                                        human intelligence.
+                                    </p>
+
+                                    <p>
+                                        These systems can process
+                                        information, recognize patterns,
+                                        generate content, reason through
+                                        problems, and learn from data.
+                                    </p>
+
+
+                                    <!-- Code Example -->
+                                    <pre class="code-block"><code>const response = await chatGVTL.ask(message);</code></pre>
+
+                                </div>
+
+
+                                <!-- AI Metadata -->
+                                <div class="message-metadata">
+
+                                    <span>
+                                        ✦ RenAI Router
+                                    </span>
+
+                                    <span>
+                                        •
+                                    </span>
+
+                                    <span>
+                                        RenAI Auto
+                                    </span>
+
+                                    <span>
+                                        •
+                                    </span>
+
+                                    <span>
+                                        Completed
+                                    </span>
+
+                                </div>
+
+
+                                <!-- Message Actions -->
+                                <div class="message-actions">
+
+                                    <button
+                                        type="button"
+                                        data-action="copy"
+                                        aria-label="Copy response"
+                                    >
+                                        ⧉
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        data-action="like"
+                                        aria-label="Good response"
+                                    >
+                                        👍
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        data-action="dislike"
+                                        aria-label="Bad response"
+                                    >
+                                        👎
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        data-action="regenerate"
+                                        aria-label="Regenerate response"
+                                    >
+                                        ↻
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        data-action="more"
+                                        aria-label="More options"
+                                    >
+                                        ⋮
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- Typing Indicator -->
+                    <article
+                        class="message message-ai message-typing"
+                        id="typing-indicator"
+                        hidden
+                    >
+
+                        <div class="message-wrapper">
+
+                            <div class="message-avatar ai-message-avatar">
+
+                                <img
+                                    src="assets/brand/renai-gvtl-icon.svg"
+                                    alt="ChatGVTL"
+                                >
+
+                            </div>
+
+
+                            <div class="message-body">
+
+                                <div class="message-header">
+
+                                    <strong>
+                                        ChatGVTL
+                                    </strong>
+
+                                </div>
+
+
+                                <div class="typing-indicator">
+
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 COMPOSER
+            ================================================== -->
+
+            <footer class="chat-composer-area">
+
+                <div class="composer-container">
+
+                    <!-- Attachment Menu -->
+                    <div
+                        class="attachment-menu"
+                        id="attachment-menu"
+                        hidden
+                    >
+
+                        <button
+                            type="button"
+                            data-attachment="file"
+                        >
+                            <span>📄</span>
+                            Upload file
+                        </button>
+
+                        <button
+                            type="button"
+                            data-attachment="image"
+                        >
+                            <span>◇</span>
+                            Upload image
+                        </button>
+
+                        <button
+                            type="button"
+                            data-attachment="camera"
+                        >
+                            <span>◉</span>
+                            Camera
+                        </button>
+
+                    </div>
+
+
+                    <!-- Composer -->
+                    <form
+                        class="message-composer"
+                        id="message-composer"
+                    >
+
+                        <div class="composer-main">
+
+                            <!-- Attach -->
+                            <button
+                                type="button"
+                                class="composer-button"
+                                id="attachment-button"
+                                aria-label="Add attachment"
+                                aria-expanded="false"
+                            >
+                                ＋
+                            </button>
+
+
+                            <!-- Textarea -->
+                            <div class="composer-input-wrapper">
+
+                                <label
+                                    for="message-input"
+                                    class="sr-only"
+                                >
+                                    Message ChatGVTL
+                                </label>
+
+                                <textarea
+                                    id="message-input"
+                                    name="message"
+                                    rows="1"
+                                    maxlength="32000"
+                                    placeholder="Message ChatGVTL..."
+                                    autocomplete="off"
+                                    spellcheck="true"
+                                ></textarea>
+
+
+                                <!-- Composer Tools -->
+                                <div class="composer-tools">
+
+                                    <button
+                                        type="button"
+                                        class="composer-tool"
+                                        id="deep-think-button"
+                                        aria-label="Extended reasoning"
+                                    >
+                                        ✦
+                                        <span>
+                                            Think
+                                        </span>
+                                    </button>
+
+
+                                    <button
+                                        type="button"
+                                        class="composer-tool"
+                                        id="web-search-button"
+                                        aria-label="Web search"
+                                    >
+                                        ⌕
+                                        <span>
+                                            Search
+                                        </span>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Voice -->
+                            <button
+                                type="button"
+                                class="composer-button"
+                                id="voice-button"
+                                aria-label="Voice input"
+                            >
+                                ◉
+                            </button>
+
+
+                            <!-- Send -->
+                            <button
+                                type="submit"
+                                class="composer-send-button"
+                                id="send-button"
+                                aria-label="Send message"
+                                disabled
+                            >
+                                <span>
+                                    →
+                                </span>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+
+                    <!-- Composer Disclaimer -->
+                    <div class="composer-footer">
+
+                        <span>
+                            ChatGVTL can make mistakes.
+                            Check important information.
+                        </span>
+
+                        <span>
+                            <a href="privacy.html">
+                                Privacy
+                            </a>
+
+                            <span>•</span>
+
+                            <a href="terms.html">
+                                Terms
+                            </a>
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </footer>
+
+        </main>
+
+
+        <!-- =====================================================
+             RIGHT-SIDE / FLOATING STATUS
+        ====================================================== -->
+
+        <div
+            class="router-status"
+            id="router-status"
+            aria-live="polite"
+        >
+
+            <span class="router-status-indicator"></span>
+
+            <span class="router-status-content">
+
+                <strong>
+                    RenAI Router
+                </strong>
+
+                <small>
+                    Operational
+                </small>
+
+            </span>
+
+        </div>
+
+
+        <!-- =====================================================
+             MODAL CONTAINER
+        ====================================================== -->
+
+        <div
+            class="modal-overlay"
+            id="modal-overlay"
+            hidden
+        >
+
+            <div
+                class="modal"
+                id="global-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modal-title"
+            >
+
+                <div class="modal-header">
+
+                    <h2 id="modal-title">
+                        Modal
+                    </h2>
+
+                    <button
+                        type="button"
+                        class="modal-close"
+                        id="modal-close"
+                        aria-label="Close"
+                    >
+                        ×
+                    </button>
+
+                </div>
+
+
+                <div
+                    class="modal-body"
+                    id="modal-body"
+                >
+                </div>
+
+
+                <div
+                    class="modal-footer"
+                    id="modal-footer"
+                >
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================================
+             TOAST CONTAINER
+        ====================================================== -->
+
+        <div
+            class="toast-container"
+            id="toast-container"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
+
+
+        <!-- =====================================================
+             HIDDEN FILE INPUTS
+        ====================================================== -->
+
+        <input
+            type="file"
+            id="file-upload"
+            name="file-upload"
+            hidden
+            multiple
+        >
+
+        <input
+            type="file"
+            id="image-upload"
+            name="image-upload"
+            accept="image/*"
+            hidden
+            multiple
+        >
+
+        <input
+            type="file"
+            id="camera-input"
+            name="camera-input"
+            accept="image/*"
+            capture="environment"
+            hidden
+        >
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script
+        src="js/app.js"
+        defer
+    ></script>
+
+</body>
+</html>
+

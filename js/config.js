@@ -4,19 +4,15 @@
 
 "use strict";
 
-
-/* =========================================================
-   APPLICATION CONFIG
-   ========================================================= */
+const api = window.ChatGVTLAPIConfig || {};
 
 const ChatGVTLConfig = {
 
     app: {
         name: "ChatGVTL",
-        version: "0.1.0",
+        version: "0.2.0",
         environment: "development"
     },
-
 
     brand: {
         name: "ChatGVTL",
@@ -24,38 +20,27 @@ const ChatGVTLConfig = {
         poweredBy: "RenAI GVTL"
     },
 
-
     router: {
         name: "RenAI Router",
-        status: "online",
-        defaultModel: "RenAI Auto"
+        status: api.ENABLED ? "ready" : "offline",
+        defaultModel: api.MODEL || "RenAI Auto"
     },
-
 
     chat: {
         maxInputLength: 12000,
-
-        welcomeMessage:
-            "Welcome to ChatGVTL",
-
-        placeholder:
-            "Ask ChatGVTL anything..."
+        welcomeMessage: "Welcome to ChatGVTL",
+        placeholder: "Ask ChatGVTL anything..."
     },
 
-
     ui: {
-
         sidebar: {
             mobileBreakpoint: 720
         },
-
         composer: {
             minHeight: 42,
             maxHeight: 180
         }
-
     },
-
 
     storage: {
         chatHistoryKey: "chatgvtl_chat_history",
@@ -63,32 +48,21 @@ const ChatGVTLConfig = {
         activeChatKey: "chatgvtl_active_chat"
     },
 
-
     api: {
-
-        /*
-         * Untuk sekarang API belum kita aktifkan.
-         * Nanti bagian ini akan digunakan ketika
-         * RenAI Router / backend sudah siap.
-         */
-
-        enabled: false,
-
-        baseURL: "",
-
+        enabled: Boolean(api.ENABLED),
+        baseURL: api.ENDPOINT || "",
+        apiKey: api.API_KEY || "",
+        model: api.MODEL || "RenAI Auto",
+        systemPrompt: api.SYSTEM_PROMPT || "",
+        temperature: api.TEMPERATURE ?? 0.7,
+        maxTokens: api.MAX_TOKENS ?? 2048,
+        extraHeaders: api.EXTRA_HEADERS || {},
         endpoints: {
-            chat: "/api/chat",
-            models: "/api/models",
-            health: "/api/health"
+            chat: "",
+            models: "",
+            health: ""
         }
-
     }
-
 };
-
-
-/* =========================================================
-   GLOBAL ACCESS
-   ========================================================= */
 
 window.ChatGVTLConfig = ChatGVTLConfig;

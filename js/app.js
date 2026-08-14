@@ -337,6 +337,37 @@ class ChatGVTLApp {
 
         }
 
+        /* Restore the last active chat, or use the first chat. */
+        let savedActive = null;
+
+        try {
+            savedActive = localStorage.getItem(
+                this.config.storage.activeChatKey
+            );
+        } catch (error) {
+            console.warn("Unable to restore active chat:", error);
+        }
+
+        const restored =
+            this.state.chats.find(
+                chat => chat.id === savedActive
+            );
+
+        this.state.activeChatId =
+            restored?.id ||
+            this.state.chats[0]?.id ||
+            null;
+
+        this.refreshHistory();
+
+        if (this.state.activeChatId) {
+            const active = this.getActiveChat();
+            if (active) {
+                this.renderChat(active);
+                this.setActiveHistoryItem(active.id);
+            }
+        }
+
     }
 
 

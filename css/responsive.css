@@ -1,0 +1,669 @@
+/* =========================================================
+   ChatGVTL — Responsive Styles
+   ========================================================= */
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1440px) {
+
+    :root {
+        --sidebar-width: 270px;
+        --composer-max-width: 900px;
+        --content-max-width: 960px;
+    }
+
+    .welcome-screen {
+        padding-top: 110px;
+    }
+
+    .welcome-title {
+        font-size: 52px;
+    }
+
+    .quick-actions {
+        width: 680px;
+    }
+}
+
+
+/* =========================================================
+   DESKTOP / LAPTOP
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+    :root {
+        --sidebar-width: 235px;
+    }
+
+    .welcome-screen {
+        padding-top: 78px;
+    }
+
+    .welcome-title {
+        font-size: clamp(34px, 4.5vw, 46px);
+    }
+
+    .quick-actions {
+        width: min(100%, 620px);
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    :root {
+        --sidebar-width: 230px;
+        --topbar-height: 68px;
+    }
+
+    .sidebar {
+        width: var(--sidebar-width);
+        flex-basis: var(--sidebar-width);
+    }
+
+    .sidebar-brand {
+        height: 68px;
+    }
+
+    .welcome-screen {
+        padding-top: 68px;
+    }
+
+    .welcome-logo {
+        width: 74px;
+        height: 74px;
+    }
+
+    .welcome-title {
+        font-size: 38px;
+    }
+
+    .welcome-description {
+        max-width: 520px;
+        font-size: 12px;
+    }
+
+    .quick-actions {
+        width: min(100%, 580px);
+    }
+
+    .composer-wrapper {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+}
+
+
+/* =========================================================
+   SMALL TABLET / LARGE PHONE
+   ========================================================= */
+
+@media (max-width: 720px) {
+
+    :root {
+        --topbar-height: 62px;
+    }
+
+    /* -----------------------------------------------------
+       SIDEBAR
+       ----------------------------------------------------- */
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+
+        z-index: var(--z-modal);
+
+        width: min(82vw, 300px);
+
+        transform: translateX(-105%);
+
+        box-shadow:
+            15px 0 45px rgba(0, 0, 0, 0.45);
+
+        transition:
+            transform var(--transition-slow);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    /* -----------------------------------------------------
+       SIDEBAR OVERLAY
+       ----------------------------------------------------- */
+
+    .sidebar::after {
+        content: "";
+
+        position: fixed;
+
+        top: 0;
+        left: 100vw;
+
+        width: 100vw;
+        height: 100%;
+
+        pointer-events: none;
+
+        background: rgba(0, 0, 0, 0.55);
+
+        opacity: 0;
+
+        transition:
+            opacity var(--transition-slow);
+    }
+
+    .sidebar.open::after {
+        left: 82vw;
+
+        pointer-events: auto;
+
+        opacity: 1;
+    }
+
+    /* -----------------------------------------------------
+       MAIN
+       ----------------------------------------------------- */
+
+    .main {
+        width: 100%;
+    }
+
+    /* -----------------------------------------------------
+       MOBILE MENU
+       ----------------------------------------------------- */
+
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .topbar {
+        justify-content: center;
+    }
+
+    .topbar-actions {
+        right: 10px;
+    }
+
+    .topbar-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    .topbar-button:first-child {
+        display: none;
+    }
+
+    .profile-button {
+        width: 30px;
+        height: 30px;
+    }
+
+    /* -----------------------------------------------------
+       MODEL SELECTOR
+       ----------------------------------------------------- */
+
+    .model-selector {
+        min-width: 126px;
+        height: 36px;
+
+        padding: 0 11px;
+    }
+
+    /* -----------------------------------------------------
+       WELCOME
+       ----------------------------------------------------- */
+
+    .welcome-screen {
+        width: calc(100% - 28px);
+
+        padding-top: 52px;
+        padding-bottom: 170px;
+    }
+
+    .welcome-logo {
+        width: 68px;
+        height: 68px;
+
+        margin-bottom: 15px;
+
+        border-radius: 20px;
+    }
+
+    .welcome-brand {
+        font-size: 9px;
+    }
+
+    .welcome-title {
+        font-size: clamp(30px, 8vw, 38px);
+
+        letter-spacing: -1.5px;
+    }
+
+    .welcome-description {
+        max-width: 470px;
+
+        margin-top: 11px;
+
+        font-size: 11px;
+    }
+
+    /* -----------------------------------------------------
+       QUICK ACTIONS
+       ----------------------------------------------------- */
+
+    .quick-actions {
+        width: 100%;
+
+        margin-top: 27px;
+
+        gap: 8px;
+    }
+
+    .quick-action {
+        min-height: 70px;
+
+        padding: 11px;
+    }
+
+    .quick-action-icon {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+
+        margin-right: 9px;
+
+        font-size: 14px;
+    }
+
+    .quick-action-content strong {
+        font-size: 11px;
+    }
+
+    .quick-action-content small {
+        font-size: 8px;
+    }
+
+    /* -----------------------------------------------------
+       MESSAGES
+       ----------------------------------------------------- */
+
+    .messages-container {
+        width: calc(100% - 24px);
+
+        padding-bottom: 175px;
+    }
+
+    .message-content {
+        max-width: 88%;
+
+        font-size: 12px;
+    }
+
+    /* -----------------------------------------------------
+       COMPOSER
+       ----------------------------------------------------- */
+
+    .composer-wrapper {
+        padding:
+            7px
+            10px
+            max(8px, env(safe-area-inset-bottom));
+
+        background:
+            linear-gradient(
+                180deg,
+                rgba(5, 10, 16, 0),
+                rgba(5, 10, 16, 0.94) 18%,
+                rgba(5, 10, 16, 1) 100%
+            );
+    }
+
+    .composer-tools {
+        width: 100%;
+
+        margin-bottom: 3px;
+    }
+
+    .composer {
+        min-height: 55px;
+
+        padding-left: 12px;
+
+        border-radius: 14px;
+    }
+
+    .message-input {
+        min-height: 38px;
+
+        padding-top: 9px;
+        padding-bottom: 9px;
+
+        font-size: 12px;
+    }
+
+    .send-button {
+        width: 36px;
+        height: 36px;
+
+        flex-basis: 36px;
+
+        border-radius: 10px;
+
+        font-size: 16px;
+    }
+
+    .composer-footer {
+        font-size: 7px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .topbar {
+        height: 58px;
+    }
+
+    .mobile-menu-button {
+        left: 10px;
+
+        width: 34px;
+        height: 34px;
+    }
+
+    .model-selector {
+        min-width: 116px;
+
+        padding: 0 9px;
+    }
+
+    .model-name {
+        font-size: 10px;
+    }
+
+    .topbar-actions {
+        right: 8px;
+
+        gap: 2px;
+    }
+
+    .topbar-button {
+        width: 28px;
+        height: 28px;
+
+        font-size: 12px;
+    }
+
+    .profile-button {
+        width: 28px;
+        height: 28px;
+
+        font-size: 10px;
+    }
+
+    /* -----------------------------------------------------
+       WELCOME
+       ----------------------------------------------------- */
+
+    .welcome-screen {
+        width: calc(100% - 24px);
+
+        padding-top: 42px;
+    }
+
+    .welcome-logo {
+        width: 62px;
+        height: 62px;
+
+        border-radius: 18px;
+    }
+
+    .welcome-title {
+        font-size: 29px;
+
+        letter-spacing: -1.2px;
+    }
+
+    .welcome-description {
+        max-width: 340px;
+
+        font-size: 10px;
+
+        line-height: 1.55;
+    }
+
+    /* -----------------------------------------------------
+       QUICK ACTIONS
+       ----------------------------------------------------- */
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+
+        width: min(100%, 380px);
+
+        margin-top: 24px;
+    }
+
+    .quick-action {
+        min-height: 62px;
+    }
+
+    /* -----------------------------------------------------
+       COMPOSER FOOTER
+       ----------------------------------------------------- */
+
+    .composer-footer > span:first-child {
+        max-width: 58%;
+
+        overflow: hidden;
+
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .router-status {
+        margin-left: auto;
+    }
+
+    .composer-settings {
+        margin-left: 4px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONE
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .topbar {
+        height: 54px;
+    }
+
+    .mobile-menu-button {
+        width: 32px;
+        height: 32px;
+    }
+
+    .model-selector {
+        min-width: 104px;
+        height: 34px;
+    }
+
+    .model-name {
+        font-size: 9px;
+    }
+
+    .topbar-button {
+        display: none;
+    }
+
+    .profile-button {
+        display: flex;
+    }
+
+    .welcome-screen {
+        padding-top: 32px;
+    }
+
+    .welcome-logo {
+        width: 56px;
+        height: 56px;
+
+        margin-bottom: 13px;
+    }
+
+    .welcome-brand {
+        font-size: 8px;
+    }
+
+    .welcome-title {
+        font-size: 26px;
+    }
+
+    .welcome-description {
+        font-size: 9px;
+    }
+
+    .quick-action {
+        min-height: 58px;
+
+        padding: 9px;
+    }
+
+    .quick-action-icon {
+        width: 31px;
+        height: 31px;
+
+        flex-basis: 31px;
+
+        font-size: 13px;
+    }
+
+    .quick-action-content strong {
+        font-size: 10px;
+    }
+
+    .quick-action-content small {
+        font-size: 7px;
+    }
+
+    .composer-wrapper {
+        padding-left: 7px;
+        padding-right: 7px;
+    }
+
+    .composer {
+        min-height: 52px;
+    }
+
+    .message-input {
+        font-size: 11px;
+    }
+
+    .send-button {
+        width: 34px;
+        height: 34px;
+
+        flex-basis: 34px;
+    }
+}
+
+
+/* =========================================================
+   LANDSCAPE PHONE
+   ========================================================= */
+
+@media (
+    max-width: 900px
+) and (
+    orientation: landscape
+) {
+
+    .welcome-screen {
+        padding-top: 28px;
+        padding-bottom: 130px;
+    }
+
+    .welcome-logo {
+        width: 54px;
+        height: 54px;
+
+        margin-bottom: 10px;
+    }
+
+    .welcome-title {
+        font-size: 27px;
+    }
+
+    .welcome-description {
+        margin-top: 7px;
+    }
+
+    .quick-actions {
+        margin-top: 18px;
+    }
+
+    .quick-action {
+        min-height: 58px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICES
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .new-chat-button:hover,
+    .quick-action:hover,
+    .history-item:hover,
+    .explore-item:hover,
+    .topbar-button:hover,
+    .composer-tool:hover,
+    .composer-settings:hover {
+        transform: none;
+    }
+
+    button {
+        -webkit-tap-highlight-color: transparent;
+    }
+}

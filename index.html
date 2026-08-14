@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="description"
+        content="ChatGVTL — Intelligent AI assistant powered by the RenAI GVTL ecosystem."
+    >
+
+    <meta name="theme-color" content="#050a11">
+
+    <title>ChatGVTL — RenAI GVTL</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         APP ROOT
+    ========================================================== -->
+
+    <div id="app" class="app">
+
+        <!-- =====================================================
+             SIDEBAR
+        ====================================================== -->
+
+        <aside id="sidebar" class="sidebar">
+
+            <!-- Brand -->
+            <div class="sidebar-brand">
+
+                <div class="brand-icon">
+                    <img
+                        src="assets/brand/chatgvtl-logo.png"
+                        alt="ChatGVTL"
+                    >
+                </div>
+
+                <div class="brand-information">
+                    <span class="brand-name">ChatGVTL</span>
+                    <span class="brand-powered">
+                        Powered by RenAI GVTL
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- New Chat -->
+            <button
+                id="newChatButton"
+                class="new-chat-button"
+                type="button"
+            >
+                <span class="button-icon">＋</span>
+                <span>New Chat</span>
+            </button>
+
+
+            <!-- Search -->
+            <div class="chat-search">
+
+                <span class="search-icon">⌕</span>
+
+                <input
+                    id="chatSearchInput"
+                    type="search"
+                    placeholder="Search chats"
+                    autocomplete="off"
+                >
+
+                <span class="search-shortcut">Ctrl K</span>
+
+            </div>
+
+
+            <!-- Recent -->
+            <section class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    RECENT
+                </div>
+
+                <nav class="chat-history">
+
+                    <button
+                        class="history-item active"
+                        type="button"
+                        data-chat="welcome"
+                    >
+                        <span class="history-dot"></span>
+                        <span class="history-title">
+                            Welcome to ChatGVTL
+                        </span>
+                    </button>
+
+                    <button
+                        class="history-item"
+                        type="button"
+                        data-chat="router"
+                    >
+                        <span class="history-dot"></span>
+                        <span class="history-title">
+                            RenAI Router
+                        </span>
+                    </button>
+
+                    <button
+                        class="history-item"
+                        type="button"
+                        data-chat="discussion"
+                    >
+                        <span class="history-dot"></span>
+                        <span class="history-title">
+                            AI Model Discussion
+                        </span>
+                    </button>
+
+                </nav>
+
+            </section>
+
+
+            <!-- Explore -->
+            <section class="sidebar-section">
+
+                <div class="sidebar-section-title">
+                    EXPLORE
+                </div>
+
+                <nav class="explore-menu">
+
+                    <button
+                        class="explore-item"
+                        type="button"
+                        data-page="explore"
+                    >
+                        <span class="explore-icon">✦</span>
+                        <span>Explore</span>
+                    </button>
+
+                    <button
+                        class="explore-item"
+                        type="button"
+                        data-page="models"
+                    >
+                        <span class="explore-icon">◇</span>
+                        <span>Models</span>
+                    </button>
+
+                    <button
+                        class="explore-item"
+                        type="button"
+                        data-page="images"
+                    >
+                        <span class="explore-icon">♢</span>
+                        <span>Images</span>
+                    </button>
+
+                    <button
+                        class="explore-item"
+                        type="button"
+                        data-page="settings"
+                    >
+                        <span class="explore-icon">⚙</span>
+                        <span>Settings</span>
+                    </button>
+
+                </nav>
+
+            </section>
+
+
+            <!-- Sidebar Bottom -->
+            <div class="sidebar-bottom">
+
+                <div class="system-status">
+
+                    <span class="status-indicator"></span>
+
+                    <div class="status-information">
+                        <span class="status-title">
+                            System Online
+                        </span>
+
+                        <span class="status-description">
+                            RenAI Router ready
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="sidebar-copyright">
+                    © 2026 RenAI GVTL
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN AREA
+        ====================================================== -->
+
+        <main class="main">
+
+            <!-- =================================================
+                 TOPBAR
+            ================================================== -->
+
+            <header class="topbar">
+
+                <!-- Mobile Menu -->
+                <button
+                    id="mobileMenuButton"
+                    class="mobile-menu-button"
+                    type="button"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <!-- Model Selector -->
+                <button
+                    id="modelSelector"
+                    class="model-selector"
+                    type="button"
+                >
+
+                    <span class="online-dot"></span>
+
+                    <span class="model-name">
+                        RenAI Auto
+                    </span>
+
+                    <span class="model-arrow">
+                        ▾
+                    </span>
+
+                </button>
+
+
+                <!-- Topbar Actions -->
+                <div class="topbar-actions">
+
+                    <button
+                        class="topbar-button"
+                        type="button"
+                        aria-label="Theme"
+                    >
+                        ◐
+                    </button>
+
+                    <button
+                        class="topbar-button"
+                        type="button"
+                        aria-label="Settings"
+                    >
+                        ⚙
+                    </button>
+
+                    <button
+                        id="profileButton"
+                        class="profile-button"
+                        type="button"
+                        aria-label="Profile"
+                    >
+                        R
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- =================================================
+                 CHAT CONTENT
+            ================================================== -->
+
+            <section id="chatArea" class="chat-area">
+
+                <!-- Welcome Screen -->
+                <div id="welcomeScreen" class="welcome-screen">
+
+                    <div class="welcome-logo">
+
+                        <img
+                            src="assets/brand/renai-gvtl-icon.png"
+                            alt="RenAI GVTL"
+                        >
+
+                    </div>
+
+
+                    <div class="welcome-brand">
+                        RENAI GVTL
+                    </div>
+
+
+                    <h1 class="welcome-title">
+                        Welcome to
+                        <span>ChatGVTL</span>
+                    </h1>
+
+
+                    <p class="welcome-description">
+                        Your intelligent AI assistant, powered by the
+                        RenAI GVTL ecosystem.
+                    </p>
+
+
+                    <!-- Quick Actions -->
+                    <div class="quick-actions">
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-prompt="Explain something"
+                        >
+
+                            <span class="quick-action-icon">
+                                💡
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <strong>
+                                    Explain something
+                                </strong>
+
+                                <small>
+                                    Learn concepts clearly
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-prompt="Write code"
+                        >
+
+                            <span class="quick-action-icon">
+                                💻
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <strong>
+                                    Write code
+                                </strong>
+
+                                <small>
+                                    Build and debug projects
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-prompt="Create content"
+                        >
+
+                            <span class="quick-action-icon">
+                                🖇
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <strong>
+                                    Create content
+                                </strong>
+
+                                <small>
+                                    Write, rewrite and brainstorm
+                                </small>
+
+                            </span>
+
+                        </button>
+
+
+                        <button
+                            class="quick-action"
+                            type="button"
+                            data-prompt="Analyze information"
+                        >
+
+                            <span class="quick-action-icon">
+                                ◉
+                            </span>
+
+                            <span class="quick-action-content">
+
+                                <strong>
+                                    Analyze information
+                                </strong>
+
+                                <small>
+                                    Understand complex data
+                                </small>
+
+                            </span>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Messages -->
+                <div
+                    id="messagesContainer"
+                    class="messages-container"
+                    aria-live="polite"
+                >
+                    <!-- Messages will be inserted by JavaScript -->
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 COMPOSER
+            ================================================== -->
+
+            <div class="composer-wrapper">
+
+                <!-- Composer Tools -->
+                <div class="composer-tools">
+
+                    <button
+                        class="composer-tool"
+                        type="button"
+                        aria-label="Attach file"
+                    >
+                        ＋
+                    </button>
+
+                    <button
+                        class="composer-tool"
+                        type="button"
+                        aria-label="Tools"
+                    >
+                        ◇
+                    </button>
+
+                    <button
+                        class="composer-tool"
+                        type="button"
+                        aria-label="Image"
+                    >
+                        ◉
+                    </button>
+
+                </div>
+
+
+                <!-- Composer -->
+                <form
+                    id="chatForm"
+                    class="composer"
+                    autocomplete="off"
+                >
+
+                    <textarea
+                        id="messageInput"
+                        class="message-input"
+                        rows="1"
+                        placeholder="Ask ChatGVTL anything..."
+                        aria-label="Message ChatGVTL"
+                    ></textarea>
+
+
+                    <button
+                        id="sendButton"
+                        class="send-button"
+                        type="submit"
+                        aria-label="Send message"
+                    >
+                        ➤
+                    </button>
+
+                </form>
+
+
+                <!-- Footer -->
+                <div class="composer-footer">
+
+                    <span>
+                        ChatGVTL can make mistakes.
+                        Verify important information.
+                    </span>
+
+                    <span class="router-status">
+
+                        <span class="router-status-dot"></span>
+
+                        RenAI Router
+
+                    </span>
+
+                    <button
+                        class="composer-settings"
+                        type="button"
+                        aria-label="Chat settings"
+                    >
+                        ⚙
+                    </button>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/config.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>

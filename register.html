@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Create your ChatGVTL account — Powered by RenAI GVTL."
+    >
+
+    <meta name="theme-color" content="#05090f">
+
+    <title>Create Account — ChatGVTL</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <!-- BRAND -->
+
+            <div class="auth-brand">
+
+                <div class="auth-logo">
+                    <img
+                        src="assets/brand/chatgvtl-logo.png"
+                        alt="ChatGVTL"
+                    >
+                </div>
+
+                <div class="auth-brand-name">
+                    ChatGVTL
+                </div>
+
+                <div class="auth-powered">
+                    Powered by RenAI GVTL
+                </div>
+
+            </div>
+
+
+            <!-- HEADING -->
+
+            <div class="auth-heading">
+
+                <h1>
+                    Create your account
+                </h1>
+
+                <p>
+                    Start your journey with ChatGVTL.
+                </p>
+
+            </div>
+
+
+            <!-- REGISTER FORM -->
+
+            <form
+                id="registerForm"
+                class="auth-form"
+                autocomplete="on"
+            >
+
+                <!-- NAME -->
+
+                <div class="form-field">
+
+                    <label for="registerName">
+                        Name
+                    </label>
+
+                    <input
+                        id="registerName"
+                        name="name"
+                        type="text"
+                        placeholder="Your name"
+                        autocomplete="name"
+                        minlength="2"
+                        maxlength="80"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- EMAIL -->
+
+                <div class="form-field">
+
+                    <label for="registerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="registerEmail"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- PASSWORD -->
+
+                <div class="form-field">
+
+                    <label for="registerPassword">
+                        Password
+                    </label>
+
+                    <input
+                        id="registerPassword"
+                        name="password"
+                        type="password"
+                        placeholder="Create a password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- CONFIRM PASSWORD -->
+
+                <div class="form-field">
+
+                    <label for="registerConfirmPassword">
+                        Confirm password
+                    </label>
+
+                    <input
+                        id="registerConfirmPassword"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Repeat your password"
+                        autocomplete="new-password"
+                        minlength="8"
+                        required
+                    >
+
+                </div>
+
+
+                <!-- TERMS -->
+
+                <label class="auth-checkbox">
+
+                    <input
+                        id="acceptTerms"
+                        type="checkbox"
+                        required
+                    >
+
+                    <span>
+                        I agree to the
+                        <a href="#">
+                            Terms of Service
+                        </a>
+                        and
+                        <a href="#">
+                            Privacy Policy
+                        </a>.
+                    </span>
+
+                </label>
+
+
+                <!-- SUBMIT -->
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+                    Create Account
+                </button>
+
+            </form>
+
+
+            <!-- FOOTER -->
+
+            <div class="auth-footer">
+
+                <span>
+                    Already have an account?
+                </span>
+
+                <a href="login.html">
+                    Sign in
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- COPYRIGHT -->
+
+        <footer class="auth-copyright">
+
+            <span>
+                © 2026 RenAI GVTL
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                ChatGVTL
+            </span>
+
+        </footer>
+
+    </main>
+
+<script src="js/core/storage.js"></script>
+
+<script>
+    "use strict";
+
+    const registerForm =
+        document.getElementById("registerForm");
+
+
+    registerForm?.addEventListener(
+        "submit",
+        event => {
+
+            event.preventDefault();
+
+
+            const name =
+                document.getElementById(
+                    "registerName"
+                ).value.trim();
+
+
+            const email =
+                document.getElementById(
+                    "registerEmail"
+                ).value.trim();
+
+
+            const password =
+                document.getElementById(
+                    "registerPassword"
+                ).value;
+
+
+            const confirmPassword =
+                document.getElementById(
+                    "registerConfirmPassword"
+                ).value;
+
+
+            /* =================================================
+               PASSWORD VALIDATION
+               ================================================= */
+
+            if (password.length < 8) {
+
+                alert(
+                    "Password must contain at least 8 characters."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               CONFIRM PASSWORD
+               ================================================= */
+
+            if (
+                password !==
+                confirmPassword
+            ) {
+
+                alert(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               SAVE USER
+               ================================================= */
+
+            const saved =
+                ChatGVTLStorage.saveUser({
+
+                    name: name,
+
+                    email: email
+
+                });
+
+
+            if (!saved) {
+
+                alert(
+                    "Unable to save your account data."
+                );
+
+                return;
+
+            }
+
+
+            /* =================================================
+               REDIRECT
+               ================================================= */
+
+            window.location.href =
+                "login.html";
+
+        }
+    );
+
+</script>
+
+</body>
+</html>

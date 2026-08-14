@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="ChatGVTL Settings — Powered by RenAI GVTL."
+    >
+
+    <meta name="theme-color" content="#05090f">
+
+    <title>Settings — ChatGVTL</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="settings-page">
+
+    <main class="settings-container">
+
+        <!-- =================================================
+             TOP BAR
+             ================================================= -->
+
+        <header class="settings-topbar">
+
+            <a
+                href="index.html"
+                class="settings-back"
+                aria-label="Back to ChatGVTL"
+            >
+                ←
+            </a>
+
+            <div class="settings-title">
+
+                <strong>
+                    Settings
+                </strong>
+
+                <span>
+                    ChatGVTL
+                </span>
+
+            </div>
+
+            <div class="settings-brand">
+                RenAI GVTL
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+             ================================================= -->
+
+        <section class="settings-content">
+
+
+            <!-- =================================================
+                 ACCOUNT
+                 ================================================= -->
+
+            <section class="settings-section">
+
+                <div class="settings-section-heading">
+
+                    <h2>
+                        Account
+                    </h2>
+
+                    <p>
+                        Manage your ChatGVTL account.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+                    <div class="account-profile">
+
+                        <div class="account-avatar">
+                            U
+                        </div>
+
+                        <div class="account-info">
+
+                            <strong id="accountName">
+                                ChatGVTL User
+                            </strong>
+
+                            <span id="accountEmail">
+                                Not signed in
+                            </span>
+
+                        </div>
+
+                        <a
+                            href="login.html"
+                            class="settings-small-button"
+                        >
+                            Sign in
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 AI MODEL
+                 ================================================= -->
+
+            <section class="settings-section">
+
+                <div class="settings-section-heading">
+
+                    <h2>
+                        AI Model
+                    </h2>
+
+                    <p>
+                        Choose how ChatGVTL handles conversations.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Default model
+                            </strong>
+
+                            <span>
+                                Model used for new conversations.
+                            </span>
+
+                        </div>
+
+
+                        <select
+                            id="defaultModel"
+                            class="settings-select"
+                        >
+
+                            <option value="RenAI Auto">
+                                RenAI Auto
+                            </option>
+
+                            <option value="RenAI Lite">
+                                RenAI Lite
+                            </option>
+
+                            <option value="RenAI Pro">
+                                RenAI Pro
+                            </option>
+
+                            <option value="RenAI Flash">
+                                RenAI Flash
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Smart routing
+                            </strong>
+
+                            <span>
+                                Let RenAI Router select the appropriate model.
+                            </span>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                id="smartRouting"
+                                checked
+                            >
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 APPEARANCE
+                 ================================================= -->
+
+            <section class="settings-section">
+
+                <div class="settings-section-heading">
+
+                    <h2>
+                        Appearance
+                    </h2>
+
+                    <p>
+                        Customize the ChatGVTL interface.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Theme
+                            </strong>
+
+                            <span>
+                                Current interface theme.
+                            </span>
+
+                        </div>
+
+
+                        <select
+                            id="themeSelect"
+                            class="settings-select"
+                        >
+
+                            <option value="dark">
+                                Dark
+                            </option>
+
+                            <option value="system">
+                                System
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Compact interface
+                            </strong>
+
+                            <span>
+                                Reduce spacing between interface elements.
+                            </span>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                id="compactMode"
+                            >
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Enter to send
+                            </strong>
+
+                            <span>
+                                Press Enter to send a message.
+                            </span>
+
+                        </div>
+
+
+                        <label class="settings-switch">
+
+                            <input
+                                type="checkbox"
+                                id="enterToSend"
+                                checked
+                            >
+
+                            <span></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DATA
+                 ================================================= -->
+
+            <section class="settings-section">
+
+                <div class="settings-section-heading">
+
+                    <h2>
+                        Data
+                    </h2>
+
+                    <p>
+                        Manage locally stored ChatGVTL data.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Chat history
+                            </strong>
+
+                            <span>
+                                Conversations stored in this browser.
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="settings-danger-button"
+                            id="clearHistory"
+                        >
+                            Clear history
+                        </button>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Local settings
+                            </strong>
+
+                            <span>
+                                Reset ChatGVTL interface preferences.
+                            </span>
+
+                        </div>
+
+
+                        <button
+                            type="button"
+                            class="settings-small-button"
+                            id="resetSettings"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 ABOUT
+                 ================================================= -->
+
+            <section class="settings-section">
+
+                <div class="settings-section-heading">
+
+                    <h2>
+                        About
+                    </h2>
+
+                    <p>
+                        Information about this ChatGVTL build.
+                    </p>
+
+                </div>
+
+
+                <div class="settings-card">
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                ChatGVTL
+                            </strong>
+
+                            <span>
+                                Conversational AI platform.
+                            </span>
+
+                        </div>
+
+                        <span class="settings-version">
+                            v0.1.0
+                        </span>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                AI Infrastructure
+                            </strong>
+
+                            <span>
+                                RenAI GVTL
+                            </span>
+
+                        </div>
+
+                        <span class="settings-online">
+                            Development
+                        </span>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <div class="settings-row-info">
+
+                            <strong>
+                                Router
+                            </strong>
+
+                            <span>
+                                RenAI Router
+                            </span>
+
+                        </div>
+
+                        <span class="settings-online">
+                            Online
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FOOTER
+                 ================================================= -->
+
+            <footer class="settings-footer">
+
+                <span>
+                    © 2026 RenAI GVTL
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    ChatGVTL
+                </span>
+
+                <span>
+                    •
+                </span>
+
+                <span>
+                    Built for the future of AI
+                </span>
+
+            </footer>
+
+        </section>
+
+    </main>
+
+
+    <script>
+        "use strict";
+
+
+<script src="js/core/storage.js"></script>
+
+<script>
+"use strict";
+
+
+const defaultSettings = {
+
+    defaultModel: "RenAI Auto",
+
+    smartRouting: true,
+
+    theme: "dark",
+
+    compactMode: false,
+
+    enterToSend: true
+
+};
+
+
+const model =
+    document.getElementById("defaultModel");
+
+const smartRouting =
+    document.getElementById("smartRouting");
+
+const theme =
+    document.getElementById("themeSelect");
+
+const compactMode =
+    document.getElementById("compactMode");
+
+const enterToSend =
+    document.getElementById("enterToSend");
+
+
+/* =========================================================
+   LOAD SETTINGS
+   ========================================================= */
+
+function loadSettings() {
+
+    const saved =
+        ChatGVTLStorage.getSettings();
+
+
+    const settings = {
+        ...defaultSettings,
+        ...saved
+    };
+
+
+    model.value =
+        settings.defaultModel;
+
+    smartRouting.checked =
+        settings.smartRouting;
+
+    theme.value =
+        settings.theme;
+
+    compactMode.checked =
+        settings.compactMode;
+
+    enterToSend.checked =
+        settings.enterToSend;
+
+}
+
+
+/* =========================================================
+   SAVE SETTINGS
+   ========================================================= */
+
+function saveSettings() {
+
+    ChatGVTLStorage.saveSettings({
+
+        defaultModel:
+            model.value,
+
+        smartRouting:
+            smartRouting.checked,
+
+        theme:
+            theme.value,
+
+        compactMode:
+            compactMode.checked,
+
+        enterToSend:
+            enterToSend.checked
+
+    });
+
+}
+
+
+[
+    model,
+    smartRouting,
+    theme,
+    compactMode,
+    enterToSend
+].forEach(element => {
+
+    element?.addEventListener(
+        "change",
+        saveSettings
+    );
+
+});
+
+
+/* =========================================================
+   CLEAR CHAT HISTORY
+   ========================================================= */
+
+document
+    .getElementById("clearHistory")
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const confirmed =
+                confirm(
+                    "Clear all ChatGVTL chat history from this browser?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            ChatGVTLStorage.clearChatHistory();
+
+            ChatGVTLStorage.clearActiveChat();
+
+
+            alert(
+                "Chat history has been cleared."
+            );
+
+        }
+    );
+
+
+/* =========================================================
+   RESET SETTINGS
+   ========================================================= */
+
+document
+    .getElementById("resetSettings")
+    ?.addEventListener(
+        "click",
+        () => {
+
+            const confirmed =
+                confirm(
+                    "Reset all ChatGVTL settings?"
+                );
+
+
+            if (!confirmed) {
+                return;
+            }
+
+
+            ChatGVTLStorage.resetSettings();
+
+            loadSettings();
+
+        }
+    );
+
+
+/* =========================================================
+   LOAD USER
+   ========================================================= */
+
+function loadUser() {
+
+    const user =
+        ChatGVTLStorage.getUser();
+
+
+    if (!user) {
+        return;
+    }
+
+
+    const name =
+        document.getElementById(
+            "accountName"
+        );
+
+    const email =
+        document.getElementById(
+            "accountEmail"
+        );
+
+
+    if (user.name && name) {
+
+        name.textContent =
+            user.name;
+
+    }
+
+
+    if (user.email && email) {
+
+        email.textContent =
+            user.email;
+
+    }
+
+}
+
+
+/* =========================================================
+   INIT
+   ========================================================= */
+
+loadSettings();
+
+loadUser();
+
+</script>

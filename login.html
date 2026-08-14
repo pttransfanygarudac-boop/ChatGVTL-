@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sign in to ChatGVTL — Powered by RenAI GVTL."
+    >
+
+    <meta name="theme-color" content="#05090f">
+
+    <title>Sign In — ChatGVTL</title>
+
+    <link rel="icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body class="auth-page">
+
+    <main class="auth-container">
+
+        <section class="auth-card">
+
+            <!-- Brand -->
+            <div class="auth-brand">
+
+                <div class="auth-logo">
+                    <img
+                        src="assets/brand/chatgvtl-logo.svg"
+                        alt="ChatGVTL"
+                    >
+                </div>
+
+                <div class="auth-brand-name">
+                    ChatGVTL
+                </div>
+
+                <div class="auth-powered">
+                    Powered by RenAI GVTL
+                </div>
+
+            </div>
+
+
+            <!-- Heading -->
+            <div class="auth-heading">
+
+                <h1>
+                    Welcome back
+                </h1>
+
+                <p>
+                    Sign in to continue to ChatGVTL.
+                </p>
+
+            </div>
+
+
+            <!-- Form -->
+            <form
+                id="loginForm"
+                class="auth-form"
+                autocomplete="on"
+            >
+
+                <div class="form-field">
+
+                    <label for="loginEmail">
+                        Email
+                    </label>
+
+                    <input
+                        id="loginEmail"
+                        name="email"
+                        type="email"
+                        placeholder="you@example.com"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-field">
+
+                    <div class="form-label-row">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <a
+                            href="#"
+                            class="forgot-password"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+                    <input
+                        id="loginPassword"
+                        name="password"
+                        type="password"
+                        placeholder="Enter your password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="auth-submit"
+                >
+                    Sign In
+                </button>
+
+            </form>
+
+
+            <!-- Divider -->
+            <div class="auth-divider">
+                <span>OR</span>
+            </div>
+
+
+            <!-- Social / alternative -->
+            <button
+                type="button"
+                class="auth-alternative"
+                id="continueGuest"
+            >
+                Continue without account
+            </button>
+
+
+            <!-- Register -->
+            <div class="auth-footer">
+
+                <span>
+                    Don't have an account?
+                </span>
+
+                <a href="register.html">
+                    Create account
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- Bottom branding -->
+        <footer class="auth-copyright">
+
+            <span>
+                © 2026 RenAI GVTL
+            </span>
+
+            <span>
+                •
+            </span>
+
+            <span>
+                ChatGVTL
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <script>
+        "use strict";
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const continueGuest =
+            document.getElementById("continueGuest");
+
+
+        loginForm?.addEventListener(
+            "submit",
+            event => {
+
+                event.preventDefault();
+
+                /*
+                 * Authentication backend belum aktif.
+                 * Untuk sementara kita arahkan kembali
+                 * ke ChatGVTL.
+                 */
+
+                window.location.href =
+                    "index.html";
+
+            }
+        );
+
+
+        continueGuest?.addEventListener(
+            "click",
+            () => {
+
+                window.location.href =
+                    "index.html";
+
+            }
+        );
+    </script>
+
+</body>
+</html>
